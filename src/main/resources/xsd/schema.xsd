@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://schemas.ericsson.com/vas/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.ericsson.com/vas/">
+
+    <xs:element name="username" type="xs:string" />
+    <xs:element name="password" type="xs:string" />
+
+    <xs:complexType name="vasRequestType">
+        <xs:sequence>
+            <xs:element name="msisdn" type="msisdnType"/>
+            <xs:element name="oldMsisdn" type="msisdnType" minOccurs="0" />
+            <xs:element name="operation" type="operationTypes"/>
+            <xs:element name="imsi" type="imsiType" minOccurs="0" />
+            <xs:element name="originalRequestId" type="xs:string" minOccurs="0" />
+            <xs:element name="provisioningStatus" type="provisioningStatusTypes" minOccurs="0" />
+            <xs:element name="subscriptionType" type="subscriptionTypes" />
+            <xs:element name="productCode" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="vasResponseType">
+        <xs:sequence>
+            <xs:element name="responseCode" type="xs:string" minOccurs="1" />
+            <xs:element name="responseDescription" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="vasRequest" type="vasRequestType" />
+    <xs:element name="vasResponse" type="vasResponseType" />
+
+    <xs:simpleType name="msisdnType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6"/>
+            <xs:maxLength value="15"/>
+            <xs:pattern value="[0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="imsiType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6" />
+            <xs:maxLength value="15" />
+            <xs:pattern value="[0-9]*" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="operationTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="activate"/>
+            <xs:enumeration value="deactivate"/>
+            <xs:enumeration value="msisdnChange"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="subscriptionTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="prepaid"/>
+            <xs:enumeration value="postpaid"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="provisioningStatusTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="success"/>
+            <xs:enumeration value="fail"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
