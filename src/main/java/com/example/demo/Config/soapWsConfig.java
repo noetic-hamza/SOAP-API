@@ -28,12 +28,12 @@ public class soapWsConfig {
 
     }
 
-    @Bean(name="soapUserCheck")
+    @Bean(name="userDetails")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema){
         DefaultWsdl11Definition defaultWsdl11Definition = new DefaultWsdl11Definition();
-        defaultWsdl11Definition.setPortTypeName("UserEndpoint");
+        defaultWsdl11Definition.setPortTypeName("User");
         defaultWsdl11Definition.setLocationUri("/ws");
-        defaultWsdl11Definition.setTargetNamespace("http://schemas.ericsson.com/sopapi/");
+        defaultWsdl11Definition.setTargetNamespace("http://schemas.ericsson.com/");
         defaultWsdl11Definition.setSchema(schema);
 
         return defaultWsdl11Definition;
@@ -42,7 +42,7 @@ public class soapWsConfig {
 
     @Bean
     public XsdSchema schema(){
-        return new SimpleXsdSchema(new ClassPathResource("UserDetails.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("UserRequest.xsd"));
     }
 
 

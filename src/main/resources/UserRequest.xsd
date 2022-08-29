@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns="http://schemas.ericsson.com/sopapi/"
+            xmlns="http://schemas.ericsson.com/"
             elementFormDefault="qualified"
-            targetNamespace="http://schemas.ericsson.com/sopapi/">
+            targetNamespace="http://schemas.ericsson.com/">
 
     <xsd:element name="UserRequest">
         <xsd:complexType>
@@ -11,8 +11,7 @@
                 <xsd:element name ="UserName" type="xsd:string"/>
                 <xsd:element name ="UsePassword" type="xsd:string"/>
                 <xsd:element name ="DN" type="xsd:string"/>
-                <xsd:element name ="Response" type="xsd:long"/>
-                <xsd:element name ="DESC" type="xsd:string"/>
+
 
             </xsd:sequence>
         </xsd:complexType>
